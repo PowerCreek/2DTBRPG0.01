@@ -1,0 +1,13 @@
+package com.mygdx.game.pFunctional;
+
+public class RenderManager {
+
+		public 
+	
+	public void render(int tag, int x, int y){
+		
+		
+		
+	}
+	
+}

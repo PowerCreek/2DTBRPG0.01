@@ -1,0 +1,206 @@
+package Base;
+
+import java.awt.Component;
+import java.awt.Point;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+public class Input implements KeyListener, MouseListener, MouseMotionListener, FocusListener {
+
+	private  boolean[] keys;
+	public  boolean leftMouseButton;
+	public  boolean middleMouseButton;
+	public  boolean rightMouseButton;
+	public  boolean anyMouseButton;
+	public  boolean focus;
+	public  Point mousePos;
+	
+	private static Input input = new Input();
+	public String lastKey =  "";
+	
+	public static enum MouseButton {
+		LEFT_MOUSE_BUTTON,
+		MIDDLE_MOUSE_BUTTON,
+		RIGHT_MOUSE_BUTTON,
+		ANY_MOUSE_BUTTON;
+	}
+	
+	public static Input getInput(){
+		return input;
+	}
+	
+	public Input() {
+		keys = new boolean[1000];
+		mousePos = new Point(0, 0);
+	}
+	
+	public void resetKeys(){
+		for(int i = 0; i < keys.length;i++){
+			keys[i] = false;
+		}
+	}
+	
+	public void addListeners(Component e){
+		e.addKeyListener(this);
+		e.addFocusListener(this);
+		e.addMouseListener(this);
+		e.addMouseMotionListener(this);
+	}
+	
+	public void removeListeners(Component e){
+		e.removeKeyListener(this);
+		e.removeFocusListener(this);
+		e.removeMouseListener(this);
+		e.removeMouseMotionListener(this);
+	}
+	
+	public boolean isKeyDown(int key) {
+		return keys[key];
+	}
+	
+	public boolean checkForKeyPress(){
+		for(boolean key : keys){
+			if(key)
+				return true;
+		}
+		return false;
+	}
+	
+	public boolean isMouseDown(MouseButton button){
+		anyMouseButton = true;
+		if(button == MouseButton.LEFT_MOUSE_BUTTON){
+			return leftMouseButton;
+		} else if(button == MouseButton.MIDDLE_MOUSE_BUTTON){
+			return middleMouseButton;
+		}else if(button == MouseButton.RIGHT_MOUSE_BUTTON){
+			return rightMouseButton;
+		}else if(button == MouseButton.ANY_MOUSE_BUTTON){
+			if(leftMouseButton || rightMouseButton || middleMouseButton){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean hasFocus(){
+		return focus;
+	}
+	
+	public Point getMousePos(){
+		return mousePos;
+	}
+	
+	public int getMouseX(){
+		return mousePos.x;
+	}
+	
+	public int getMouseY(){
+		return mousePos.y;
+	}
+	
+	@Override
+	public void focusGained(FocusEvent e){
+		focus = true;
+	}
+	
+	@Override
+	public void focusLost(FocusEvent e){
+		focus = false;
+		resetKeys();
+	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e){
+		mousePos = e.getPoint();
+	}
+	
+	@Override
+	public void mouseMoved(MouseEvent e){
+		mousePos = e.getPoint();
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e){
+		
+	}
+	
+	@Override
+	public void mouseEntered(MouseEvent e){
+		mousePos = e.getPoint();
+	}
+	
+	@Override
+	public void mouseExited(MouseEvent e){
+		mousePos = e.getPoint();
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e){
+		
+		if(e.getButton() == 1){
+			leftMouseButton = true;
+		}
+		if(e.getButton() == 2){
+			middleMouseButton = true;
+		}
+		if(e.getButton() == 3){
+			rightMouseButton = true;
+		}
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e){
+		if(!anyMouseButton){
+		anyMouseButton = false;
+		}
+		if(e.getButton() == 1){
+			leftMouseButton = false;
+		}
+		if(e.getButton() == 2){
+			middleMouseButton = false;
+		}
+		if(e.getButton() == 3){
+			rightMouseButton = false;
+		}
+	}
+	
+	boolean shift = false;
+	
+	@Override
+	public void keyPressed(KeyEvent e){
+		if(e.getKeyCode() >=0 && e.getKeyCode() <= keys.length){
+			keys[e.getKeyCode()] = true;
+		}
+	
+		lastKey = (e.getKeyChar()+"").toUpperCase();	
+
+		if(e.getKeyCode() == KeyEvent.VK_SHIFT){
+		lastKey = "";
+		}
+		
+
+	}
+	
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if(e.getKeyCode() >=0 && e.getKeyCode() <= keys.length){
+			keys[e.getKeyCode()] = false;
+		}	
+		
+		lastKey = "";
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e){
+		
+	}
+
+
+	
+}

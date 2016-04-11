@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 packages to &apos;core/src/com.mygdx.game.pFunctional&apos;&#x0D;&#x0A;- Original project: &apos;IsoMetricRendering&apos;&#x0D;&#x0A;- Destination element: &apos;core/src/com.mygdx.game.pFunctional&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     IsoMetricRendering/src/Base&#x0D;&#x0A;     IsoMetricRendering/src/Base.custom" description="Copy packages" destination="=core/src&lt;com.mygdx.game.pFunctional" element1="/src&lt;Base" element2="/src&lt;Base.custom" flags="589830" fragments="2" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1460226668824" version="1.0"/>
+</session>

@@ -1,0 +1,19 @@
+package com.mygdx.game.pFunctional;
+
+import Base.Input;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class RunGame {
+
+	
+	
+	public void update(){
+		System.out.println(Input.getInput().mousePos);
+	}
+	
+	public void render(SpriteBatch sb){
+		
+	}
+	
+}

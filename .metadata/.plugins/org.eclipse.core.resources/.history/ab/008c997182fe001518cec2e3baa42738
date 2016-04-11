@@ -1,0 +1,19 @@
+package com.mygdx.game.pFunctional;
+
+import Base.Input;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class RunGame {
+
+	
+	
+	public void update(){
+		
+	}
+	
+	public void render(SpriteBatch sb){
+		
+	}
+	
+}

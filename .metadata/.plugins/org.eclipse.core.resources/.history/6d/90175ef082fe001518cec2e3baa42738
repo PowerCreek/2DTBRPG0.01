@@ -1,0 +1,9 @@
+package com.mygdx.game.pFunctional;
+
+public class Input {
+
+	public boolean[] buttons = new boolean[3];
+	
+	
+	
+}

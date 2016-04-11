@@ -1,0 +1,8 @@
+package com.mygdx.game.pFunctional;
+
+public class Chain<T> {
+
+	public Link<T> start = null;
+	
+	
+}

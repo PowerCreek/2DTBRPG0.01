@@ -1,0 +1,46 @@
+package Base;
+
+import java.awt.Graphics2D;
+
+import Core.RunGame;
+
+
+public class Game extends BasicGame{
+	int wDiff = Math.abs(size.width-gamewindow.getSize().width);
+	int hDiff = Math.abs(size.height-gamewindow.getSize().height);
+	
+
+	RunGame rg;
+	
+	@Override
+	public void initiate() {
+		
+			rg = new RunGame(); 
+		
+	}
+	
+
+	Timer t = new Timer(50);
+	@Override
+	public void update() {
+		
+		rg.update();
+	
+		
+	}
+	
+	@Override
+	public void render(Graphics2D g) {
+	
+		rg.render(g);
+	
+	}
+
+	public static void main(String[] args){
+		Game game = new Game();
+		game.createWindow();
+	}
+	
+	
+	
+}

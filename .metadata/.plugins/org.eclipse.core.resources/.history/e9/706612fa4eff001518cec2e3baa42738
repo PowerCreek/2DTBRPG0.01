@@ -1,0 +1,74 @@
+package com.mygdx.game;
+
+import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.game.pFunctional.Input;
+import com.mygdx.game.pFunctional.RunGame;
+
+public class MyGdxGame extends ApplicationAdapter {
+	SpriteBatch batch;
+	BitmapFont bf;
+	RunGame RG = new RunGame();
+	Input input = new Input();
+	
+	OrthographicCamera cam;
+	Viewport viewport;
+	double aspect = 16/9;
+	@Override
+	public void create () {
+		RG.init();
+		batch = new SpriteBatch();
+		this.bf = new BitmapFont();
+		input.apply();
+		
+		int w = Gdx.graphics.getWidth();
+		int h = Gdx.graphics.getHeight();
+		
+	}
+
+	public void update(){
+		
+		int w = Gdx.graphics.getWidth();
+		int h = Gdx.graphics.getHeight();
+		float vw, vh;
+		float ox, oy;
+		if(w > h*aspect){
+			vh = h;
+			vw = Math.round(vh*aspect);
+			oy = 0;
+			ox = (w-vw)/2;
+		}else{
+			vw = w;
+			vh = Math.round(vw*(1/aspect));
+			ox = 0;
+			oy = (h-vh)/2;
+		}
+		
+		cam = new OrthographicCamera(w,h);
+		cam.translate(w/2,h/2);
+		cam.setToOrtho(true, w/2,h/2);
+		cam.update();
+		
+		//Gdx.gl20.glViewport((int)ox, (int)oy, (int)vw, (int)vh);
+		
+		
+	}
+	
+	@Override
+	public void render () {
+		update();
+		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		batch.setProjectionMatrix(cam.combined);
+		
+		batch.begin();
+		RG.render(batch,bf,input);
+		batch.end();
+	}
+}

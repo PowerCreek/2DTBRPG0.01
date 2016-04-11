@@ -1,0 +1,19 @@
+package com.mygdx.game.pFunctional;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class RenderManager {
+
+	public Chain<Object> renderChain = new Chain<>();
+	
+	public void addDraw(Object[] txy){
+		renderChain.add(txy);
+	}
+	
+	public void render(SpriteBatch sb){
+		
+		Object[] txy = renderChain.take();
+		
+	}
+	
+}

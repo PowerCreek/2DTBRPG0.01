@@ -1,0 +1,13 @@
+package com.mygdx.game.pFunctional;
+
+public class Chain<T> {
+
+	public T held = null;
+	public Chain<T> next = null;
+	public Chain<T> start = null;
+	public void set(T t){
+		this.held = t;
+		
+	}
+	
+}

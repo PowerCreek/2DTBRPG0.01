@@ -1,0 +1,15 @@
+package com.mygdx.game.pFunctional;
+
+import com.badlogic.gdx.Gdx;
+
+public class Input {
+
+	public boolean[] buttons = new boolean[3];
+	
+	public void apply(){
+		
+		Gdx.input
+		
+	}
+	
+}

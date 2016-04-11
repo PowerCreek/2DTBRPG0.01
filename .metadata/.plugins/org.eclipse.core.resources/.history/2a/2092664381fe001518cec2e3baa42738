@@ -1,0 +1,62 @@
+package Base;
+
+import java.awt.Canvas;
+
+import javax.swing.JFrame;
+
+public class GameWindow extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	Canvas canvas;
+	BasicGame screen;
+	
+	public GameWindow(BasicGame screen){
+		
+		this.screen = screen;
+		canvas = new Canvas();
+		canvas.setSize(BasicGame.size);
+		canvas.setIgnoreRepaint(true);
+		this.requestFocus();
+		this.setVisible(false);
+		this.setResizable(true);
+		
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.add(canvas);
+		//Essential v
+		this.pack();
+		
+		//make the window in the middle of the computer monitor
+		//this.setLocationRelativeTo(null);
+		
+		this.setLocationRelativeTo(null);
+		
+		//Have no idea what this actually does.
+		canvas.createBufferStrategy(2);
+		
+		//Force the screen to have focus /easier to debug quickly
+		canvas.requestFocus();
+		
+		//We're not using a JFrame native screen to paint, we're
+		//using a canvas, so this is ignoring the pain mechanics.
+		this.setIgnoreRepaint(true);
+		
+		
+	}
+	
+	public void createWindow(){
+		screen.setBuffer(canvas.getBufferStrategy());
+		this.setVisible(true);
+		Input.getInput().addListeners(canvas);
+		
+		if(!screen.isRunning())
+			screen.start();
+		canvas.requestFocus();
+	}
+	
+	public JFrame getWindow(){
+		return this;
+	}
+	
+	
+
+}

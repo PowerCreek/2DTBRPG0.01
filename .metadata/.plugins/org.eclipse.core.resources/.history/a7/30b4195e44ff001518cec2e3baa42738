@@ -1,0 +1,29 @@
+package com.mygdx.game.pFunctional;
+
+import com.badlogic.gdx.graphics.Texture;
+
+
+public class DrawSpec {
+
+	public enum dType{
+		IMAGE,FONT;
+	}
+	
+	public dType;
+	public Texture t;
+	public int x;
+	public int y;
+	public int w;
+	public int h;
+	
+	public DrawSpec(Texture t,int x,int y,int w,int h){
+		this.t = t;
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+	}
+	
+	
+	
+}

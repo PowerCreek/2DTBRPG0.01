@@ -1,0 +1,32 @@
+package com.mygdx.game.pFunctional;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class RenderManager {
+
+	public Chain<Object> renderChain = new Chain<>();
+	
+	public RenderManager(){
+
+		renderChain.add("test0");
+		renderChain.add("test1");
+		renderChain.add("test2");
+		renderChain.add("test3");
+		
+		System.out.println(renderChain.take().toString());
+		System.out.println(renderChain.take().toString());
+		System.out.println(renderChain.take().toString());
+		
+	}
+	
+	public void addDraw(Object o){
+		renderChain.add(o);
+	}
+	
+	public void render(SpriteBatch sb){
+		
+		
+		
+	}
+	
+}

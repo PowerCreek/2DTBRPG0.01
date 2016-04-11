@@ -1,0 +1,23 @@
+package com.mygdx.game.pFunctional;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class RunGame {
+	
+	Texture t;
+	
+	public void init(){
+		this.t = new Texture("badlogic.jpg");
+	}
+	
+	public void update(Input input){
+	
+	}
+	
+	public void render(SpriteBatch sb,Input input){
+			this.update(input);
+			sb.draw(t, input.pos.get(0), -input.pos.get(1),10,10);
+	}
+	
+}

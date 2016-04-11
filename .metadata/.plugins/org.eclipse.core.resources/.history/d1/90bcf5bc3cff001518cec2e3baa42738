@@ -1,0 +1,13 @@
+package com.mygdx.game.pFunctional;
+
+public class Link<T>{
+
+	public T held = null;
+	public Link<T> next = null;
+	
+	@Override
+	public String toString(){
+		return held.toString();
+	}
+	
+}

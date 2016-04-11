@@ -1,0 +1,14 @@
+package com.mygdx.game.pFunctional;
+
+
+public class DrawSpec {
+
+	public enum dType{
+		IMAGE,FONT;
+	}
+	
+	public DrawSpec(Texture t,(int)x,(int)y,(int)w,(int)h){
+		
+	}
+	
+}

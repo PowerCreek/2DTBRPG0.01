@@ -1,0 +1,27 @@
+package com.mygdx.game.pFunctional;
+
+import Base.custom.IntArr;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class RunGame {
+	
+	Texture t;
+	IntArr screen;
+	public void init(){
+		this.t = new Texture("badlogic.jpg");
+		this.screen = new IntArr(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+	}
+	
+	public void update(Input input){
+		this.screen = new IntArr(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+	}
+	
+	public void render(SpriteBatch sb,Input input){
+			this.update(input);
+			sb.draw(t, input.pos.get(0), input.pos.get(1),10,10);
+	}
+	
+}

@@ -1,0 +1,22 @@
+package com.mygdx.game.pFunctional;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class RenderManager {
+
+	public Chain<Object[]> renderChain = new Chain<>();
+	
+	public void addDraw(Object[] txy){
+		renderChain.add(txy);
+	}
+	
+	public void render(SpriteBatch sb){
+		
+		Object[] txy;
+		while((txy = renderChain.take()) != null){
+			sb.draw((Texture)txy[0],(int) txy[1],(int) txy[2],(int)txy[3],(int)txy[4]);
+		}
+	}
+	
+}
